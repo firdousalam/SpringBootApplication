@@ -73,7 +73,7 @@ public class EmployeeController {
 
     }
 
-    @DeleteMapping("employeeToDelete/{empId}")
+    @DeleteMapping("employeeToDelete/{id}")
     public String deleteEmployee(@PathVariable Long id) {
 
         Optional<Employee> emp = employeeRepository.findById(id);
