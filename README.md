@@ -26,8 +26,8 @@ step 1 : Install Mysql workbench 8.0.36 from https://dev.mysql.com/downloads/ins
 download this one Windows (x86, 32-bit), MSI Installer	8.0.36	285.3M	Dow
 Step 2 : Install MYSQL by following the guideline mention in the following link
 https://www.freecodecamp.org/news/how-to-install-mysql-workbench-on-windows/#:~:text=There%20are%20a%20lot%20of,completely%20free%2C%20by%20the%20way.
-
 step 3 : setup mysql variable as mention above
+step 4 : Remember Password and open workbench and create one Database for this project i had created Database name as newdb
 
 # setup VSCODE to Develop SpringBoot Application
 1. Install VSCOde https://code.visualstudio.com/
@@ -71,7 +71,19 @@ If you are using WEB then ZIP file will get Downloaded Extract it for IDE like S
 
 Now Your Setup Is Done
 
-   
+# Step reqiuire to Run your SpringBoot CRUD Application 
+
+Inside your main\java\com\yourpackagename xyzApplication.java is your main class and it will be the entry Point of Your Application and you can run your application from here
+
+## step 1 : GoTO recorces\application.properties and add following code
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://localhost:3306/newdb
+spring.datasource.username=root
+spring.datasource.password=Admin@123
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.show-sql: true
+
+
 
 
 
