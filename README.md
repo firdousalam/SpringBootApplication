@@ -77,14 +77,83 @@ Inside your main\java\com\yourpackagename xyzApplication.java is your main class
 
 ## step 1 : GoTO recorces\application.properties and add following code
 spring.jpa.hibernate.ddl-auto=update
+
 spring.datasource.url=jdbc:mysql://localhost:3306/newdb
+
 spring.datasource.username=root
+
 spring.datasource.password=Admin@123
+
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
 spring.jpa.show-sql: true
 
+## Step 2 : Setup Entity for Database Interaction
+Create one Package/folder Named as Model (this folder will contain all Model,Schema of your database table)
+Create one Java Class file names as Employee.java
 
+example
+@Entity
+@Table
+public class Employee {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long employee_id;
+    @Column
+    private String emp_name;
+    @Column
+    private int emp_age;
+    @Column
+    private String emp_city;
+   /* .............
+    .............
+    ...........
+    */
+
+}
+
+    and Generate Setter Getter,toString and Constructor etc
+
+    test you application whether its running or not if it fail check previous step
+
+## step 3 : setUp Controller for request mapping
+
+Create one Package/folder Named as Controller
+
+Create one Java Class file names as EmployeeController.java
+
+Inside Controller add controller details
+## example
+@RestController
+@RequestMapping("/api")
+public class EmployeeController {
+    @Autowired
+    EmployeeRepository employeeRepository;
+
+    @PostMapping("/employee")
+    public String createNewEmployee(@RequestBody Employee entity) {
+        // TODO: process POST request
+        employeeRepository.save(entity);
+        return "Data Saved Successfully";
+    }
+}
+
+## step 4 to communicate with Database table create JPARepository
+
+Create one Package/folder Named as Repository
+
+Create one Java Class file names as EmployeeRepository.java (note this is Interface and it extends JpaRepository)
+
+Inside Repository add following code
+
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+
+}
+
+Done now run the application and In controller add get,put,delete and other post method
+
+Happy Coding and if you need any help please ping me
 
 
 
